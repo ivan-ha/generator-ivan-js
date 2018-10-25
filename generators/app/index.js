@@ -25,4 +25,28 @@ module.exports = class extends Generator {
       'standard-version',
     ], { 'dev': true });
   }
+
+  writing() {
+    // copy entire templates directory
+    this.fs.copy(
+      this.templatePath('**'),
+      this.destinationPath(),
+      { globOptions: { dot: true } }
+    );
+
+    const pkgJson = {
+      scripts: {
+        "bump-version": "standard-version --skip.commit=true --skip.tag=true"
+      },
+      husky: {
+        hooks: {
+          "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+          "pre-commit": "lint-staged"
+        }
+      }
+    }
+
+    // extend or create package.json file in destination path
+    this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
+  }
 };
