@@ -36,7 +36,8 @@ module.exports = class extends Generator {
 
     const pkgJson = {
       scripts: {
-        "bump-version": "standard-version --skip.commit=true --skip.tag=true"
+        "bump-version": "standard-version --skip.commit=true --skip.tag=true",
+        "deploy": "gh-pages -d build"
       },
       husky: {
         hooks: {
