@@ -1,0 +1,17 @@
+{
+  "name": "generator-ivan",
+  "version": "1.0.0",
+  "description": "Ivan Yeoman generator",
+  "main": "index.js",
+  "author": "Ivan HA <hangolam@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "files": [
+    "generators"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^3.1.1"
+  }
+}
