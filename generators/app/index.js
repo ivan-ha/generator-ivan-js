@@ -42,7 +42,8 @@ module.exports = class extends Generator {
       husky: {
         hooks: {
           "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-          "pre-commit": "lint-staged"
+          "pre-commit": "lint-staged",
+          "pre-deploy": "yarn build"
         }
       }
     }
