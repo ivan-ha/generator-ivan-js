@@ -1,8 +1,13 @@
 {
-  "name": "generator-ivan",
+  "name": "generator-ivan-js",
   "version": "1.0.0",
-  "description": "Ivan Yeoman generator",
-  "main": "index.js",
+  "description": "Create js linting, formatting, deploy using gh-pages project scaffolding",
+  "homepage": "https://github.com/ivan-ha/generator-ivan-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivan-ha/generator-ivan-js"
+  },
+  "main": "generators/index.js",
   "author": "Ivan HA <hangolam@gmail.com>",
   "license": "MIT",
   "keywords": [
