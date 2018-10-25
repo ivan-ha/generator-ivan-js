@@ -14,7 +14,13 @@
     "yeoman-generator"
   ],
   "files": [
-    "generators"
+    "generators",
+    "react",
+    "flow",
+    "javascript",
+    "scaffold",
+    "ivan",
+    "generator"
   ],
   "dependencies": {
     "yeoman-generator": "^3.1.1"
