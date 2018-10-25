@@ -1,0 +1,17 @@
+{
+  "linters": {
+    "**/*.md": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.js": [
+      "import-sort --write",
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "ignore": [
+    "flow-typed/**"
+  ]
+}

@@ -1,0 +1,171 @@
+env:
+  node: true
+  es6: true
+  browser: true
+  jest: true
+
+parser: babel-eslint
+
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+
+plugins:
+  - eslint-plugin-flowtype
+  - eslint-plugin-jest
+  - eslint-plugin-ramda
+  - eslint-plugin-react
+  - eslint-plugin-react-redux
+  - eslint-plugin-redux-saga
+
+extends:
+  - eslint:recommended
+  - plugin:flowtype/recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:prettier/recommended
+  - plugin:ramda/recommended
+  - plugin:react/recommended
+  - plugin:redux-saga/recommended
+
+settings:
+  react:
+    version: "16.2.0"
+
+rules:
+  no-console: warn
+  import/namespace: [2, { allowComputed: true }]
+  no-unused-vars: ["error", { "ignoreRestSiblings": true }]
+  comma-dangle: ["error", "always-multiline"]
+
+  # marks Flow type identifiers as defined
+  flowtype/define-flow-type: error
+  # marks Flow type alias declarations as used
+  flowtype/use-flow-type: error
+  # must use verbose `Array` type syntax
+  flowtype/array-style-complex-type: error
+  flowtype/array-style-simple-type: error
+  # avoid being sorted by `import-sort`
+  flowtype/newline-after-flow-annotation: error
+  # no duplicate keys in object
+  flowtype/no-dupe-keys: error
+  # disallow existential type `*`
+  flowtype/no-existential-type: error
+  # use `string` but not `String`
+  flowtype/no-primitive-constructor-types: error
+  # no unused flow expression
+  flowtype/no-unused-expressions:
+    - error
+    - allowTaggedTemplates: true
+  # disallow `Function` type
+  flowtype/no-weak-types:
+    - error
+    - any: false
+      Object: false
+  # must use `,` for object separator
+  flowtype/object-type-delimiter: error
+  # object must have exact type `{||}`
+  flowtype/require-exact-type: error
+  # must have valid flow annotation
+  flowtype/require-valid-file-annotation: error
+  # type must be in `${PascalCase}Type` form
+  flowtype/type-id-match: error
+
+  # enforce consistent usage of `test` and `it` for readibility
+  jest/consistent-test-it: error
+  # enforce assertion inside test body
+  jest/expect-expect:
+    - error
+    - assertFunctionNames:
+        - expect
+        - expectSaga
+
+  # disallow commit test with `.only`
+  jest/no-focused-tests: error
+  # must reuse same test title in same `describe` block
+  jest/no-identical-title: error
+  # avoid unnecessary importing `jest`
+  jest/no-jest-import: error
+  # enforce `toStrictEqual()` to check object structure
+  jest/prefer-strict-equal: error
+  # use `toBeNull()` instead of `toBe(null)`
+  jest/prefer-to-be-null: error
+  # use `toBeUndefined()` instead of `toBe(undefined)`
+  jest/prefer-to-be-undefined: error
+  # use `toHaveLength()` instead of checking `length` property explicitly
+  jest/prefer-to-have-length: error
+  # avoid improper `describe` block
+  jest/valid-describe: error
+  # avoid improper `expect` statement
+  jest/valid-expect: error
+
+  # use `R.T()` instead of `R.always(true)`
+  ramda/always-simplification: error
+  # use `R.chain` instead of `R.compose(R.flatten, R.map)`
+  ramda/compose-simplification: error
+  # use `R.eqProps` instead of `R.eqBy(R.prop(_))`
+  ramda/eq-by-simplification: error
+  # use `R.both`/`R.either` instead of `R.allPass`/`R.anyPass` when there is only two predicates
+  ramda/prefer-both-either: error
+  # use `R.complement` instead of `R.compose(R.not, ...)`
+  ramda/prefer-complement: error
+
+  # must not use current state to deduce next state, since react will manage state asynchronously
+  react/no-access-state-in-setstate: error
+  # must not use array index as key, it might cause unncessary render
+  react/no-array-index-key: error
+  # must define only one react component in a file for readability
+  react/no-multi-comp: error
+  # must not use PureComponent with customized shouldComponentUpdate
+  react/no-redundant-should-component-update: error
+  # check common typos in react properties and liftcycle methods
+  react/no-typos: error
+  # must not have `this` in functional components
+  react/no-this-in-sfc: error
+  # must not use `UNSAFE_` react methods
+  react/no-unsafe: error
+  # must not have unused props and states
+  react/no-unused-prop-types: error
+  react/no-unused-state: error
+  # enforce empty component to be self closing
+  react/self-closing-comp: error
+  # enforce component organisation for readability and unity
+  react/sort-comp:
+    - error
+    - order:
+        [
+          "type-annotations",
+          "static-methods",
+          "instance-variables",
+          "lifecycle",
+          "/^handle.+$/",
+          "getters",
+          "setters",
+          "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+          "instance-methods",
+          "everything-else",
+          "rendering",
+        ]
+      groups:
+        rendering: ["/^render.+$/", "render"]
+  # enforce `style` props be an object
+  react/style-prop-object: error
+  # void DOM element must not have children
+  react/void-dom-elements-no-children: error
+  # enforce omit `true` to set boolean props
+  react/jsx-boolean-value: error
+  # avoid error caused by unintended spacing in react children
+  react/jsx-child-element-spacing: error
+  # enforce event handler naming prefix
+  react/jsx-handler-names: error
+  # react component must be in PascalCase
+  react/jsx-pascal-case: error
+
+  # avoid improper use of `mapDispatchToProps`
+  react-redux/mapDispatchToProps-returns-object: error
+  # must not return entire `store` from `mapDispatchToProps`, which harm performance
+  react-redux/mapStateToProps-no-store: error
+  # must not initialize constant objects in `mapDispatchToProps`, which harm performance
+  react-redux/mapStateToProps-prefer-hoisted: error
+  # enforce parameters naming in `mapStateToProps` for consistency
+  react-redux/mapStateToProps-prefer-parameters-names: error

@@ -18,5 +18,38 @@
   ],
   "dependencies": {
     "yeoman-generator": "^3.1.1"
+  },
+  "scripts": {
+    "bump-version": "standard-version --skip.commit=true --skip.tag=true",
+    "deploy": "gh-pages -d build"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-deploy": "yarn build"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
+    "eslint": "^5.7.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flowtype": "^3.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.26.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-ramda": "^2.5.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-redux": "^2.3.0",
+    "eslint-plugin-redux-saga": "^0.9.0",
+    "gh-pages": "^2.0.1",
+    "husky": "^1.1.2",
+    "import-sort-cli": "^5.2.0",
+    "import-sort-parser-babylon": "^5.2.0",
+    "import-sort-style-module": "^5.0.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "standard-version": "^4.4.0"
   }
 }
