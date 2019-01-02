@@ -37,13 +37,13 @@ module.exports = class extends Generator {
     const pkgJson = {
       scripts: {
         "bump-version": "standard-version --skip.commit=true --skip.tag=true",
+        "predeploy": "yarn build",
         "deploy": "gh-pages -d build"
       },
       husky: {
         hooks: {
           "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-          "pre-commit": "lint-staged",
-          "pre-deploy": "yarn build"
+          "pre-commit": "lint-staged"
         }
       }
     }
